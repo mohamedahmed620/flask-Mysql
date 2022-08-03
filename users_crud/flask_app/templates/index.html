@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/stylesheet.css') }}">
+    <title>home</title>
+</head>
+<body>
+    <div id = "container"></div>
+    <tr></tr>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First_name</th>
+            <th>Last_name</th>
+            <th>Email</th>
+            <th>Created at</th>
+            <th>Actions</th>
+        </tr>
+        {%for user in data:%}
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.created_at}}</td>
+            <td><a href="/show_user_info/{{user.id}}">Show</a><a href="/transit_edit_user_info/{{user.id}}">Edit</a><a href="/delete_user/{{user.id}}">Delete</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+    
+    <a href="/add_user">Add User</a>
+</body>
+</html>
